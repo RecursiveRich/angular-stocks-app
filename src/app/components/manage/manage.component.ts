@@ -1,27 +1,25 @@
-import { Component } from '@angular/core';
-import { StocksService } from '../../services/stocks.service';
+import { Component } from "@angular/core";
+import { StocksService } from "../../services/stocks.service";
 
 @Component({
-  selector: 'manage',
-  templateUrl: './manage.component.html',
-  styleUrls: ['./manage.component.css']
+  selector: "manage",
+  templateUrl: "./manage.component.html",
+  styleUrls: ["./manage.component.css"]
 })
 export class ManageComponent {
-
   symbols: Array<string>;
   stock: string;
 
   constructor(private service: StocksService) {
     this.symbols = service.get();
-   }
+  }
 
-   add(stock) {
+  add() {
     this.symbols = this.service.add(this.stock.toUpperCase());
-    this.stock = '';
-   }
+    this.stock = "";
+  }
 
-   remove(symbol) {
-     this.symbols = this.service.remove(symbol);
-   }
-
+  remove(symbol) {
+    this.symbols = this.service.remove(symbol);
+  }
 }
